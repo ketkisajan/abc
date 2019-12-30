@@ -1,0 +1,108 @@
+1.	create table customer(cno int,cname char(30),sal int, city char(30));
+
+2.	insert into customer values(1,'abcd',4200,'Maharashtra');
+       insert into customer values(2,'abcde',3752,'Maharashtra');
+insert into customer values(3,'abcdef',4202,'Kolkata');
+insert into customer values(4,'abcdefg',73487,'Maharashtra');
+insert into customer values(5,'abcdefgh',5643,'Maharashtra');
+insert into customer values(6,'abcdefghi',7343,'Delhi');
+insert into customer values(7,'abcdefghij',5453,'Maharashtra');
+
+3.	set linesize 120;
+
+4.	select * from customer;
+5.	select sal from customer;
+6.	select sal,city from customer;
+
+7.	select * from customer where city='Delhi';
+8.	select * from customer where city in ('Kolkata','Maharashtra');
+9.	select * from customer where city not in ('Kolkata','Maharashtra');
+
+10.	select * from customer where (city = 'Kolkata' or city = 'Maharashtra');
+
+11.	select * from customer where (city = 'Maharashtra' or sal = 73487);
+
+12.	select * from customer where cname like 'a%';
+13.	select * from customer where trim(cname) like 'a%';
+
+14.	select * from customer where cname like 'abcdefg%';
+15.	select * from customer where cname not like '%fg';
+
+16.	select * from customer where trim(cname) like '__cd';
+17.	select * from customer where cname like '__cd%';
+
+
+18.	select * from customer where trim(cname) like '____';
+
+19.	select * from customer where trim(cname) like '_____%';
+
+20.	select * from customer where cname like 'abc\%___';
+
+21.	select sum(sal) from customer group by city;
+
+22.	update customer set cname ='ketki' where cno=7;
+
+23.	delete from customer;
+24.	delete from customer where cno=6;
+
+25.	create table dept(eno int, dno int, ename char(30), dept char(30));
+
+26.	insert into dept values(101,'401','abcd','jcs');
+27.	insert into dept values(102,'402','sdsa','asa');
+
+28.	select e.eno, e.ename, d.dno, d.dept from emp e, dept d where e.sal=4200 and e.eno=d.eno;
+
+29.	select * from employees;
+
+30.	select last_name, job_id, department_id, hire_date from employees order by hire_date;
+
+31.	select count(distinct department_id) from employees;
+
+32.	select department_id, avg(salary) from employees group by department_id;
+
+33.	select avg(salary) from employees group by department_id;
+
+34.	select department_id, job_id, sum(salary) from employees where department_id >40 group by department_id,job_id order by department_id;
+
+35.	select department_id, max(salary) from employees group by department_id having max(salary)>10000;
+
+36.	select job_id, sum(salary) payroll from employees where job_id not like '%rep%' group by job_id having sum(salary) > 13000 order by sum(salary);
+
+37.	select max(avg(salary)) from employees group by department_id;
+
+38.	select distinct department_id from employees;
+
+39.	select last_name, manager_id from employees where manager_id is null;
+
+40.	select count(*) from employees where department_id = 50;
+
+41.	select count(commission_pct) from employees where department_id = 80;
+
+42.	select last_name||job_id as “Employees” from employees;
+
+43.	select avg(salary), max(salary), min(salary), sum(salary) from employees where job_id like ‘%rep%’;
+
+44.	select count(distinct department_id) from employees;
+
+45.	select last_name as name, commission_pct from employees;
+
+
+46.	select last_name  “name”, salary*12 “Annual Salary” from employees;
+47.	select min(hire_date), max(hire_date) from employees;
+48.	Describe employees;
+49.	Select employee_id, last_name, job_id, salary from employees where salary>=10000 and job_id like ‘%man%’;
+50.	Select first_name, last_name, job_id, salary*12 as yearly sal from employees;
+51.	Select last_name, salary from employees where salary > (select salary from employees where last_name = ‘abel’);
+52.	Select last_name, jo_id,  salary from employees where job_id = (select job_id from employees where last_name = ‘Taylor’) and salary>(select salary from employees where last_name = ‘Taylor’) ;
+53.	Select last_name, job_id, salary from employees where salary = (select min(salary) from employees);
+54.	Select department_id, min(salary) from employees group by department_id having min(salary) > (select min(salary) from employees where department_id =50);
+55.	Select employee_id, last_name, job_id, salary from employees where salary < any(select salary from employees where job_id = ‘IT_PROG’) and job_id<>’IT_PROG’;
+56.	Select employee_id, last_name, job_id, salary from employees where salary < all(select salary from employees where job_id = ‘IT_PROG’) and job_id<>’IT_PROG’;
+
+
+
+
+
+
+
+
